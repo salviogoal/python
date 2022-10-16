@@ -10,7 +10,10 @@ Sálvio Gomes de Almeida e Thieres Nardy Dias
 #método k-fold estratificado (particionamento da base de dados em k-folds)
 from sklearn.model_selection import StratifiedKFold
 #classificador Naive Bayes para modelos multinomiais - adequado para atributos com valores discretos
-from sklearn.naive_bayes import MultinomialNB
+#from sklearn.naive_bayes import MultinomialNB
+#classificador KNN - K Nearest Neighbors
+from sklearn.neighbors import KNeighborsClassifier
+
 
 #bibliotecas do projeto PUC-MG
 #importa o pacote da metaheurística GRASP (Greedy Randomized Adaptive Search Procedure)
@@ -26,7 +29,7 @@ RESTART_GRASP = 50
 N_FEATURES = 100
 
 #datasets considerados no projeto PUC-MG
-DATASETS = ["Colon.arff", "DLBCL.arff", "GCM.arff", "Leukemia.arff", "Lung.arff", "Lymphoma.arff", "Prostate.arff"]
+DATASETS = ["DLBCL.arff"]
 
 for dataset in DATASETS:
     
@@ -43,7 +46,11 @@ for dataset in DATASETS:
     skf = StratifiedKFold( n_splits = K_FOLDS, shuffle = True, random_state = 1 )
     
     #criação do classificador Naive Bayes Multinominal
-    clf = MultinomialNB()
+    #clf = MultinomialNB()
+    
+    #criação do classificador KNN
+    clf = KNeighborsClassifier( n_neighbors=5 )
+    
     
     #média da acurácia final e da cardinalidade do subconjunto selecionado
     sum_acc = 0.0

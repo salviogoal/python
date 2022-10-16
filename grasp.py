@@ -11,7 +11,10 @@ from sklearn.feature_selection import mutual_info_classif as mic
 #método de cross-validation
 from sklearn.model_selection import cross_val_score
 #classificador Naive Bayes para modelos multinomiais - adequado para atributos com valores discretos
-from sklearn.naive_bayes import MultinomialNB
+#from sklearn.naive_bayes import MultinomialNB
+#classificador KNN - K Nearest Neighbors
+from sklearn.neighbors import KNeighborsClassifier
+
 
 #bibliotecas padrão Python
 #n-dimensional array (numéricos)
@@ -183,7 +186,10 @@ def search( X, y, RESTART_GRASP, N_FEATURES ):
     probSel = np.zeros( len( ranking ), dtype=float )
     
     #criação do classificador Naive Bayes Multinominal
-    clf = MultinomialNB()
+    #clf = MultinomialNB()
+    #criação do classificador KNN
+    clf = KNeighborsClassifier( n_neighbors = 5 )
+    
     
     #melhor solução de todas encontradas pelo GRASP
     best = Solution()
